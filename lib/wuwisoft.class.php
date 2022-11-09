@@ -46,19 +46,19 @@ class wuwisoft {
 	*/
 	public function urlGenerator()
 	{
-		$kCode = $this->userCode;
-		$kName = $this->userName;
-		$kPass = $this->userPassword;
+		$userCode = $this->userCode;
+		$userName = $this->userName;
+		$userPass = $this->userPassword;
 
         $url = 'http://abonerss.iha.com.tr/xml/standartrss?';
-		if((strlen($kCode) > 0) || (strlen($kName) > 0) || (strlen($kPass) > 0))
+		if((strlen($userCode) > 0) || (strlen($userName) > 0) || (strlen($userPass) > 0))
 		{
-			$url .= 'UserCode=' . $kCode;
-			$url .= '&UserName=' . $kName;
-			$url .= '&UserPassword=' . $kPass;
+			$url .= 'UserCode=' . $userCode;
+			$url .= '&UserName=' . $userName;
+			$url .= '&UserPassword=' . $userPass;
 		}else
 		{
-			return "Hata <span>UserCode:</span> $kCode / <span>UserName:</span> $kName / <span>UserPassword:</span> $kPass değerlerini kontrol edin!";
+			return "Hata <span>UserCode:</span> $userCode / <span>UserName:</span> $userName / <span>UserPassword:</span> $userPass değerlerini kontrol edin!";
 		}
 
 		$url .= '&tip=1';
