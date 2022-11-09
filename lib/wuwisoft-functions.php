@@ -1,6 +1,7 @@
 <?php
 
-function wuwisoft_getIhaCurl()
+
+function wuwisoft_getIhaCurl($IHAUrl)
 {
 	$ch = curl_init();
 
@@ -18,7 +19,7 @@ function wuwisoft_getIhaCurl()
 
 	curl_setopt( $ch, CURLOPT_TIMEOUT, 10 );
 
-	curl_setopt($ch,CURLOPT_URL,'http://abonerss.iha.com.tr/xml/standartrss?UserCode=9945&UserName=guncelhaber16&UserPassword=iha1600&tip=1&UstKategori=0&Kategori=0&Sehir=0&wp=0&tagp=0');
+	curl_setopt($ch,CURLOPT_URL,$IHAUrl);
 
 	$exec = curl_exec($ch);
 	curl_close($ch);
@@ -32,36 +33,36 @@ function wuwisoft_getIhaCurl()
 		}
 	} else {
 		/*Öğeler*/
-		print_r($xml->channel->item);
-		foreach($xml->channel->item as $row)
-		{
-			?>
-				<div class="title">
-					<h1><?php echo $row->Title; ?></h1>
-				</div>
-				<div class="kategori">
-					<p>
-						<span><?php echo $row->UstKategori; ?> / <?php echo $row->Kategori; ?></span>
-					</p>
-				</div>
-
-				<div class="aciklama"><?php echo $row->description; ?></div>
-				<div class="tarihSaat"><?php echo $row->pubDate; ?> / <?php echo $row->sonHaberGuncellenmeTarihi; ?></div>
-
-			<?php if(count($row->images) > 0){ ?>
-				<div class="images">
-					<?php
-						foreach($row->images as $image)
-						{
-							?>
-								<img src="<?php echo $image; ?>" width="150" height="150" />
-							<?php
-						}
-					?>
-				</div>
-			<?php } ?>
-			<?php
-		}
+		print_r($xml->channel);
+//		foreach($xml->channel->item as $row)
+//		{
+//			?>
+<!--				<div class="title">-->
+<!--					<h1>--><?php //echo $row->Title; ?><!--</h1>-->
+<!--				</div>-->
+<!--				<div class="kategori">-->
+<!--					<p>-->
+<!--						<span>--><?php //echo $row->UstKategori; ?><!-- / --><?php //echo $row->Kategori; ?><!--</span>-->
+<!--					</p>-->
+<!--				</div>-->
+<!---->
+<!--				<div class="aciklama">--><?php //echo $row->description; ?><!--</div>-->
+<!--				<div class="tarihSaat">--><?php //echo $row->pubDate; ?><!-- / --><?php //echo $row->sonHaberGuncellenmeTarihi; ?><!--</div>-->
+<!---->
+<!--			--><?php //if(count($row->images) > 0){ ?>
+<!--				<div class="images">-->
+<!--					--><?php
+//						foreach($row->images as $image)
+//						{
+//							?>
+<!--								<img src="--><?php //echo $image; ?><!--" width="150" height="150" />-->
+<!--							--><?php
+//						}
+//					?>
+<!--				</div>-->
+<!--			--><?php //} ?>
+<!--			--><?php
+//		}
 
 //
 //		/*Haber Kodu*/

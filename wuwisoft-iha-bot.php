@@ -11,8 +11,13 @@ License: A "Slug" license name e.g. GPL2
 */
 
 include('lib/wuwisoft-functions.php');
+include('wuwi.loader.php');
 
 
-wuwisoft_getIhaCurl();
+$IHAUrl = $wuwisoft->urlGenerator();
+
+var_dump($IHAUrl);
+
+wuwisoft_getIhaCurl($IHAUrl);
 
 ?>
